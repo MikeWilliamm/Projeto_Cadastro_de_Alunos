@@ -1,5 +1,5 @@
 def menu():
-        opcoes = ['Visualizar cadastros.', 'Cadastrar usúario.', 'Sair do programa.']
+        opcoes = ['Visualizar cadastros de alunos.', 'Cadastrar aluno.', 'Deletar cadastro aluno.', 'Exporta registro para CSV.', 'Sair do programa.' ]
         cabecalho('SISTEMA CADASTRO DE ALUNOS', '\033[1;32m')
         for c in range(len(opcoes)):
             print(f'\033[1;32m{c+1} - {opcoes[c]}\033[m')
@@ -90,3 +90,4 @@ def cadastra():
             msgCor(f'ERRO: {erro}')
     
     return nome, nota1, nota2
+

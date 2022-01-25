@@ -1,4 +1,6 @@
+from select import select
 import psycopg2
+import pandas as pd
 def msgCor(msg, cor = '\033[1;31m'):
     return print(cor + msg + '\033[m')
 
@@ -39,5 +41,25 @@ def selec():
     except:
         connection_data.rollback()
         msgCor('ERRO AO TENTAR VISUALIZAR USÚARIOS CADASTRADOS!')
-    
         
+def deleta(id):
+    try:
+        connection_data, cur = conexao()
+        sql = f'delete from alunos where id = {id}'
+        cur.execute(sql)
+        connection_data.commit()
+        msgCor('Registro deletado!', '\033[1;94m')
+    except Exception as erro:
+        print(f'ERRO ao tentar deletar registro!')
+        print(erro)
+
+
+def exportaCSV():
+    connection_data, cur = conexao()
+    sql = f'select * from alunos;'
+    df = pd.read_sql_query(sql,connection_data)
+    df = pd.DataFrame(df)
+    import os
+    path = os.path.dirname(os.path.abspath(__file__))
+    df.to_csv(path + '\\registros.csv', sep = ',', index=False, encoding='utf8')
+    msgCor('Arquivos exportado com sucesso!', '\033[1;94m')

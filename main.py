@@ -1,8 +1,13 @@
-2
 #from funcoes_program import * #método de importação.
 import funcoes_program as fp
 import funcoes_DB as fdb
 from time import sleep
+
+#Função para salvar log, todos os prints devem ser chamados com ela.
+# def print_msg(msg):
+#     with open('log.txt', 'w+') as file:
+#         file.write(msg)
+#     print(msg)
 
 while True:
     fp.menu()
@@ -97,3 +102,4 @@ while True:
     if resp == 5 :
         fp.cabecalho('PROGRAMA FINALIZADO', '\033[1;32m')
         break
+

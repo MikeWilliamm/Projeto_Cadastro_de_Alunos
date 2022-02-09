@@ -14,7 +14,6 @@ def conexao():
     else:
         return connection_data, cur
 
-    
 
 def importa(nome, nota1, nota2):
         try: 
@@ -53,12 +52,14 @@ def deleta(id):
         print(f'ERRO ao tentar deletar registro!')
         print(erro)
 
-
 def exportaCSV():
+
     connection_data, cur = conexao()
     sql = f'select * from alunos;'
     df = pd.read_sql_query(sql,connection_data)
+    print(df)
     df = pd.DataFrame(df)
+
     import os
     path = os.path.dirname(os.path.abspath(__file__))
     df.to_csv(path + '\\registros.csv', sep = ',', index=False, encoding='utf8')

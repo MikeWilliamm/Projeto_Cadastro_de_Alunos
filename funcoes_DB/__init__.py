@@ -33,6 +33,7 @@ def selec():
         sql = f'select * from alunos;'
         cur.execute(sql)
         alunos = cur.fetchall()
+        #alunos = [x[0] for x in alunos] Transforma lista de tuplas em lista Python
         msgCor(f'{"ID.":<5}{"Nome":<17}{"Média":>5}','\033[1;94m')
         for i in alunos:
             msgCor(f'{i[0]:<5}{i[1]:<17}{(i[2] + i[3])/2:>5}','\033[1;94m')
